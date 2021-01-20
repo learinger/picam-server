@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title>Video Streaming </title>
+</head>
+<script>
+  function takePhoto(id) {
+    console.log('Taking Photo');
+    fetch('/photo')
+  .then(response => response.json())
+  .then(data => {
+    let url = data.photo;
+    console.log(url);
+    let imgsrc = "<img src='/" + url + "'>"
+    document.getElementById("photo").innerHTML = imgsrc;
+  });
+  }
+  </script>
+<body>
+  <h1> Live Video Streaming </h1>
+  <img src="{{ url_for('video_feed') }}">
+  <br/>
+  <button onclick="takePhoto()">Take Photo</button>
+  <div id="photo">
+    
+  </div>
+</body>
+</html>
